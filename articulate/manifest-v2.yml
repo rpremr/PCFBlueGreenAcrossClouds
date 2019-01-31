@@ -5,5 +5,5 @@ applications:
   memory: 1G
   #random-route: true
   host: pcf101-demo-articulate-v2
-  services:
-  - pcf101-demo-attendee-service
+  #services:
+  #- pcf101-demo-attendee-service
