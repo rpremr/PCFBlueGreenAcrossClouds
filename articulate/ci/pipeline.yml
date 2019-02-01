@@ -34,6 +34,7 @@ jobs:
     params:
       manifest: resource-git/attendee/manifest.yml
       path: artifacts/attendee-*.jar   
+      current_app_name: ((attendee_app_name))
 
   # Verify the app whether it's been successfully deployed
   # - get: image-javagradlegitpack
