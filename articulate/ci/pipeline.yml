@@ -26,7 +26,7 @@ jobs:
   - put: resource-pcf
     params:
       manifest: resource-git/attendee/manifest.yml
-      path: artifacts/attendee-service-*.jar   
+      path: artifacts/attendee-*.jar   
 
   #5. Deploy it to PCF
   - put: resource-pcf
