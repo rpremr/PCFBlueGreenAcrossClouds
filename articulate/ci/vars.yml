@@ -1,5 +1,5 @@
-attendee_app-name: pcf101-demo-attendee-service
-attendee_app-host: pcf101-demo-attendee-service
+attendee_app-name: ut-pcf101-demo-attendee-service
+attendee_app-host: ut-pcf101-demo-attendee-service
 app-name: pcf101-demo-articulate
 app-host: pcf101-demo-articulate
 app-instances: 1
