@@ -22,4 +22,4 @@ run:
     && cf start ${attendee_app_name} \
     && cf map-route ${attendee_app_name} ${domain} --hostname ${app_host} \
     && cf cups attendee-service -p ${app_url} \
-    && cf delete -f ${app_name}-existing
+    && cf delete -f ${attendee_app_name}-existing
