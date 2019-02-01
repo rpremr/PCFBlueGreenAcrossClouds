@@ -17,8 +17,8 @@ run:
     cd resource-git \
     && cf api ${api} --skip-ssl-validation \
     && cf login -u ${username} -p ${password} -o ${organization} -s ${space} \
-    && cf rename ${app_name} ${app_name}-existing \
-    && cf push ${app_name} -f ${manifest} --no-start \
-    && cf start ${app_name} \
-    && cf map-route ${app_name} ${domain} --hostname ${app_host} \
+    && cf rename ${attendee_app_name} ${attendee_app_name}-existing \
+    && cf push ${attendee_app_name} -f ${manifest} --no-start \
+    && cf start ${attendee_app_name} \
+    && cf map-route ${attendee_app_name} ${domain} --hostname ${app_host} \
     && cf delete -f ${app_name}-existing

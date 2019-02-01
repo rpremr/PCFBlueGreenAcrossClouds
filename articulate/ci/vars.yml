@@ -1,9 +1,11 @@
+attendee_app-name: pcf101-demo-attendee-service
+attendee_app-host: pcf101-demo-attendee-service
 app-name: pcf101-demo-articulate
 app-host: pcf101-demo-articulate
 app-instances: 1
 pcf-api: api.run.pivotal.io
 pcf-username: aponnusamy@pivotal.io
-pcf-password: xxxxxxxx
+pcf-password: Devi12Kalpana!
 pcf-domain: cfapps.io
 pcf-organization: Channel
 pcf-space: ahilan
