@@ -18,6 +18,13 @@ jobs:
   - task: build-artifacts
     file: resource-git/articulate/ci/tasks/build.yml
   
+  # Deploy Artifact
+  - put: resource-pcf
+    params: 
+      manifest: resource-git/articulate/manifest-v2.yml
+      path: artifacts/articulate-*.jar
+      current_app_name: ((app-name))
+  
   #3. Build Attendee service
   - task: build-artifacts
     file: resource-git/attendee/ci/tasks/build.yml
@@ -27,14 +34,6 @@ jobs:
     params:
       manifest: resource-git/attendee/manifest.yml
       path: artifacts/attendee-*.jar   
-
-  #5. Deploy it to PCF
-  - put: resource-pcf
-    params:
-      manifest: resource-git/articulate/manifest-v2.yml
-      path: artifacts/articulate-*.jar
-      current_app_name: ((app-name))
-      
 
   # Verify the app whether it's been successfully deployed
   # - get: image-javagradlegitpack

@@ -21,4 +21,5 @@ run:
     && cf push ${attendee_app_name} -f ${manifest} --no-start \
     && cf start ${attendee_app_name} \
     && cf map-route ${attendee_app_name} ${domain} --hostname ${app_host} \
+    && cf cups attendee-service -p https://ut-pcf101-demo-attendee.cfapps.io \
     && cf delete -f ${app_name}-existing
