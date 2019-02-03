@@ -24,7 +24,7 @@ if [ $? -eq 0 ]
 then
   echo "blue Available deploying green"
 
-  cf push green-${app_name} -p ../../target/articulate-1.0.0.jar -m 800m -n green-${app_name}
+  cf push green-${app_name} -p artifacts/articulate-1.0.0.jar -m 800m -n green-${app_name}
   cf map-route green-${app_name} -${domain} --hostname ${app_host}
   cf unmap-route green-ut-articulate ${domain} --hostname green-${app_host}
 
@@ -34,7 +34,7 @@ then
 else
   echo "blue not available deploying blue"
 
-  cf push blue-${app_name} -p ../../target/articulate-1.0.0.jar -m 800m -n blue-${app_name}
+  cf push blue-${app_name} -p artifacts/articulate-1.0.0.jar -m 800m -n blue-${app_name}
   cf map-route blue-${app_name} ${domain} --hostname ${app_host}
   cf unmap-route blue-${app_name} ${domain} --hostname blue-${app_host}
   
