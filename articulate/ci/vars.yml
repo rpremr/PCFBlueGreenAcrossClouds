@@ -1,7 +1,7 @@
 attendee_app-name: ut-pcf101-demo-attendee-service
 attendee_app-host: ut-pcf101-demo-attendee-service
-app-name: pcf101-demo-articulate
-app-host: pcf101-demo-articulate
+app-name: ut-articulate
+app-host: ut-articulate
 app-instances: 1
 pcf-api: api.run.pivotal.io
 pcf-username: aponnusamy@pivotal.io

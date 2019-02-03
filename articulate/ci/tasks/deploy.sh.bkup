@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+set +e
+
+cf api ${api} --skip-ssl-validation
+cf login -u ${username} -p ${password} -o ${organization} -s ${space}
+
+cf apps | grep blue-ut-articulate
+
+if [ $? -eq 0 ]
+then
+  echo "blue Available deploying green"
+
+  cf push green-ut-articulate -p ../../target/articulate-1.0.0.jar -m 800m -n green-ut-articulate
+  cf map-route green-ut-articulate cfapps.io --hostname ut-articulate
+  cf unmap-route green-ut-articulate cfapps.io --hostname green-ut-articulate
+
+  cf delete blue-ut-articulate -f
+  cf delete-route cfapps.io --hostname blue-ut-articulate -f
+  cf delete-route cfapps.io --hostname green-ut-articulate -f
+else
+  echo "blue not available deploying blue"
+
+  cf push blue-ut-articulate -p ../../target/articulate-1.0.0.jar -m 800m -n blue-ut-articulate
+  cf map-route blue-ut-articulate cfapps.io --hostname ut-articulate
+  cf unmap-route blue-ut-articulate cfapps.io --hostname blue-ut-articulate
+  
+  cf delete green-ut-articulate -f
+  cf delete-route cfapps.io --hostname green-ut-articulate -f
+  cf delete-route cfapps.io --hostname blue-ut-articulate -f
+fi
