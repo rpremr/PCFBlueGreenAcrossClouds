@@ -1,6 +1,20 @@
 #!/usr/bin/env bash
 set +e
 
+echo "==============================================================="
+echo "Deploy called listing all variables"
+echo "api: " ${api}
+echo "username: "${username}
+echo "password: "${password}
+echo "org: "${organization}
+echo "space: "${space}
+echo "appname: "${app_name}
+echo "apphost: "${app_host}
+echo "domain: "${domain}
+
+echo "===============================================" 
+
+
 cf api ${api} --skip-ssl-validation
 cf login -u ${username} -p ${password} -o ${organization} -s ${space}
 

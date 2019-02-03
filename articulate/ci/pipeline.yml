@@ -19,11 +19,14 @@ jobs:
     file: resource-git/articulate/ci/tasks/build.yml
   
   # Deploy Artifact
-  - put: resource-pcf
-    params: 
-      manifest: resource-git/articulate/manifest-v2.yml
-      path: artifacts/articulate-*.jar
-      current_app_name: ((app-name))
+  - task: deploy
+    file: resource-git/articulate/ci/tasks/deploy.yml
+
+#  - put: resource-pcf
+#    params: 
+#      manifest: resource-git/articulate/manifest-v2.yml
+#      path: artifacts/articulate-*.jar
+#      current_app_name: ((app-name))
   
   #3. Build Attendee service
   #- task: build-artifacts
@@ -53,15 +56,15 @@ resources:
     branch: master
 
 # CF
-- name: resource-pcf
-  type: cf
-  source:
-    api: ((pcf-api))
-    username: ((pcf-username))
-    password: ((pcf-password))
-    organization: ((pcf-organization))
-    space: ((pcf-space))
-    skip_cert_check: true
+#- name: resource-pcf
+#  type: cf
+#  source:
+#    api: ((pcf-api))
+#    username: ((pcf-username))
+#    password: ((pcf-password))
+#    organization: ((pcf-organization))
+#    space: ((pcf-space))
+#    skip_cert_check: true
 
 # Custom Image
 #- name: image-javagradlegitpack
