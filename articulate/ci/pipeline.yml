@@ -21,7 +21,15 @@ jobs:
   # Deploy Artifact
   - task: deploy
     file: resource-git/articulate/ci/tasks/deploy.yml
-
+    params:
+      api: {{pcf-api}}
+      username: {{pcf-username}}
+      password: {{pcf-password}}
+      org: {{pcf-organization}}
+      space: {{pcf-space}}
+      appname: {{app-name}}
+      apphost: {{app-host}}
+      domain: {{pcf-domain}}
 #  - put: resource-pcf
 #    params: 
 #      manifest: resource-git/articulate/manifest-v2.yml
