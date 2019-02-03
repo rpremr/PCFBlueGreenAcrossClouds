@@ -25,10 +25,10 @@ jobs:
       api: {{pcf-api}}
       username: {{pcf-username}}
       password: {{pcf-password}}
-      org: {{pcf-organization}}
+      organization: {{pcf-organization}}
       space: {{pcf-space}}
-      appname: {{app-name}}
-      apphost: {{app-host}}
+      app_name: {{app-name}}
+      app_host: {{app-host}}
       domain: {{pcf-domain}}
 #  - put: resource-pcf
 #    params: 
