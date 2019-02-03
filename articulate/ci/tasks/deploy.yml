@@ -8,6 +8,7 @@ image_resource:
 
 inputs:
 - name: resource-git
+- name: artifacts
 
 run:
   path: resource-git/articulate/ci/tasks/deploy.sh
