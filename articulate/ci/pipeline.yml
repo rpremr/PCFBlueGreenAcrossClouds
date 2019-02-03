@@ -7,7 +7,7 @@
 # 4. Perform some smoke tests
 
 jobs:
-- name: build-and-deployment
+- name: build-and-deploy
   plan:
 
   #1. Get source code from repo like Git
@@ -26,14 +26,14 @@ jobs:
       current_app_name: ((app-name))
   
   #3. Build Attendee service
-  - task: build-artifacts
-    file: resource-git/attendee/ci/tasks/build.yml
+  #- task: build-artifacts
+  #  file: resource-git/attendee/ci/tasks/build.yml
 
   #4. Deploy Attendee
-  - put: resource-pcf
-    params:
-      manifest: resource-git/attendee/manifest.yml
-      path: artifacts/attendee-*.jar   
+  #- put: resource-pcf
+  #  params:
+  #    manifest: resource-git/attendee/manifest.yml
+  #    path: artifacts/attendee-*.jar   
 
   # Verify the app whether it's been successfully deployed
   # - get: image-javagradlegitpack
