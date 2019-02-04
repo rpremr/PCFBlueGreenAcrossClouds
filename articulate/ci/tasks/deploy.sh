@@ -26,6 +26,7 @@ then
 
   cf push green-${app_name} -p artifacts/articulate-1.0.0.jar -m 800m -n green-${app_name}
   cf map-route green-${app_name} -${domain} --hostname ${app_host}
+  sleep 30s
   cf unmap-route green-ut-articulate ${domain} --hostname green-${app_host}
 
   cf delete blue-${app_name} -f
@@ -35,6 +36,7 @@ else
   echo "blue not available deploying blue"
 
   cf push blue-${app_name} -p artifacts/articulate-1.0.0.jar -m 800m -n blue-${app_name}
+  sleep 30s
   cf map-route blue-${app_name} ${domain} --hostname ${app_host}
   cf unmap-route blue-${app_name} ${domain} --hostname blue-${app_host}
   
