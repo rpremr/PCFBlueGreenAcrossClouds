@@ -48,6 +48,8 @@ else
   echo "Scaling up blue and scaling down green"
   cf scale blue-${app_name} -i 2
   cf scale green-${app-name} -i 1
+  echo "Sleeping for 15 seconds ..."
+  sleep 15s
   cf unmap-route blue-${app_name} ${domain} --hostname blue-${app_host}
   
   cf delete green-${app_name} -f
