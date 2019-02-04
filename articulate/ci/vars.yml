@@ -4,8 +4,8 @@ app-name: ut-articulate
 app-host: ut-articulate
 app-instances: 1
 pcf-api: api.run.pivotal.io
-pcf-username: aponnusamy@pivotal.io
-pcf-password: Devi12Kalpana!
+pcf-username: xxxxxxxxxx
+pcf-password: xxxxxxxxxx
 pcf-domain: cfapps.io
 pcf-organization: Channel
 pcf-space: ahilan
