@@ -44,7 +44,7 @@ public class EnvironmentHelper {
       instanceAddr = "localhost";
     }
     modelMap.put("instanceAddr", instanceAddr);
-
+    //Added to check the cloud based on api - Ahilan
     String cloudName = (String) getVcapApplicationMap().get("cf_api");  
     if (cloudName.equals("https://api.run.pivotal.io")) {
       cloudName = "AWS";
