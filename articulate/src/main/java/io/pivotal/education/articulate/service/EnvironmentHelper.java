@@ -51,7 +51,7 @@ public class EnvironmentHelper {
     }else{
       cloudName = "vSphere";
     }
-    modelMap,put("cloudName",cloudName);
+    modelMap.put("cloudName",cloudName);
 
     String applicationName = (String) getVcapApplicationMap().getOrDefault(
         "application_name", "no name environment variable");
