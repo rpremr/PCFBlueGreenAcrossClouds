@@ -25,7 +25,7 @@ then
   echo "blue Available deploying green"
 
   cf push green-${app_name} -p artifacts/articulate-1.0.0.jar -m 800m -n green-${app_name}
-  cf map-route green-${app_name} -${domain} --hostname ${app_host}
+  cf map-route green-${app_name} ${domain} --hostname ${app_host}
   echo "Sleeping for 30 seconds"
   sleep 30s
   cf unmap-route green-${app_name} ${domain} --hostname green-${app_host}
