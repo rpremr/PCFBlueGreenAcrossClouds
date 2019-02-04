@@ -45,7 +45,7 @@ public class EnvironmentHelper {
     }
     modelMap.put("instanceAddr", instanceAddr);
 
-    String cloudName = (String) getVcapApplicationMap().get("cf_api);  
+    String cloudName = (String) getVcapApplicationMap().get("cf_api");  
     if (cloudName.equals("https://api.run.pivotal.io")) {
       cloudName = "AWS";
     }else{
