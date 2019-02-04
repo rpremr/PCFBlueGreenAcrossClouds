@@ -26,6 +26,7 @@ then
 
   cf push green-${app_name} -p artifacts/articulate-1.0.0.jar -m 800m -n green-${app_name}
   cf map-route green-${app_name} -${domain} --hostname ${app_host}
+  echo "Sleeping for 30 seconds"
   sleep 30s
   cf unmap-route green-${app_name} ${domain} --hostname green-${app_host}
 
@@ -37,6 +38,7 @@ else
 
   cf push blue-${app_name} -p artifacts/articulate-1.0.0.jar -m 800m -n blue-${app_name}
   cf map-route blue-${app_name} ${domain} --hostname ${app_host}
+  echo "Sleeping for 30 seconds"
   sleep 30s
   cf unmap-route blue-${app_name} ${domain} --hostname blue-${app_host}
   
