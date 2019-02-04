@@ -4,8 +4,8 @@ set +e
 echo "==============================================================="
 echo "Deploy called listing all variables"
 echo "api: " ${api}
-echo "username: "${username}
-echo "password: "${password}
+#echo "username: "${username}
+#echo "password: "${password}
 echo "org: "${organization}
 echo "space: "${space}
 echo "appname: "${app_name}
