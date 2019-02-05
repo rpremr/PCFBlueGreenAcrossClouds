@@ -15,6 +15,6 @@ cloud2-app-instances: 1
 cloud2-pcf-api: api.run.haas-90.pez.pivotal.io
 cloud2-pcf-username: admin
 cloud2-pcf-password: fvOu7ea0ivjltPmOztnOkmlxkFmJL-Sg
-cloud2-pcf-domain: cfapps.iocfapps.haas-90.pez.pivotal.io
-cloud2-pcf-organization: UT-A
+cloud2-pcf-domain: cfapps.haas-90.pez.pivotal.io
+cloud2-pcf-organization: UT
 cloud2-pcf-space: dev
