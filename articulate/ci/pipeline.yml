@@ -37,17 +37,17 @@ jobs:
 #      current_app_name: ((app-name))
   
   # Deploy Artifact
-#  - task: deploy-Cloud2
-#    file: resource-git/articulate/ci/tasks/deploy.yml
-#    params:
-#      api: {{cloud2-pcf-api}}
-#      username: {{cloud2-pcf-username}}
-#      password: {{cloud2-pcf-password}}
-#      organization: {{cloud2-pcf-organization}}
-#      space: {{cloud2-pcf-space}}
-#      app_name: {{cloud2-app-name}}
-#      app_host: {{cloud2-app-host}}
-#      domain: {{cloud2-pcf-domain}}
+  - task: deploy-Cloud2
+    file: resource-git/articulate/ci/tasks/deploy.yml
+    params:
+      api: {{cloud2-pcf-api}}
+      username: {{cloud2-pcf-username}}
+      password: {{cloud2-pcf-password}}
+      organization: {{cloud2-pcf-organization}}
+      space: {{cloud2-pcf-space}}
+      app_name: {{cloud2-app-name}}
+      app_host: {{cloud2-app-host}}
+      domain: {{cloud2-pcf-domain}}
 
   #3. build Attendee
   #- task: build-artifacts
