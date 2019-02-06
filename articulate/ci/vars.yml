@@ -5,7 +5,7 @@ app-host: articulate
 app-instances: 1
 pcf-api: api.sys.pcf.aws.pcfjourney.com
 pcf-username: admin
-pcf-password: sesame750
+pcf-password: oTDqIAcy0iqOvCCfmY6p9tPEhktLOzf-
 pcf-domain: apps.pcf.aws.pcfjourney.com
 pcf-organization: UT
 pcf-space: dev
