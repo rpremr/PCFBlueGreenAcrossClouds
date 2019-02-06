@@ -26,6 +26,7 @@ then
 
   cf push green-${app_name} -p artifacts/articulate-1.0.0.jar -m 800m -n green-${app_name}
   cf map-route green-${app_name} ${domain} --hostname ${app_host}
+  cf map-route ${app_name} hillcountrycloud.net --hostname ${app_host}
   echo "Sleeping for 15 seconds"
   sleep 15s
   echo "Scaling up Green and Scaling down blue"
@@ -43,6 +44,7 @@ else
 
   cf push blue-${app_name} -p artifacts/articulate-1.0.0.jar -m 800m -n blue-${app_name}
   cf map-route blue-${app_name} ${domain} --hostname ${app_host}
+  cf map-route ${app_name} hillcountrycloud.net --hostname ${app_host}
   echo "Sleeping for 15 seconds"
   sleep 15s
   echo "Scaling up blue and scaling down green"

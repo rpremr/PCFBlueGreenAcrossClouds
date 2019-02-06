@@ -1,7 +1,7 @@
 attendee_app-name: ut-pcf101-demo-attendee-service
 attendee_app-host: ut-pcf101-demo-attendee-service
-app-name: ut-articulate
-app-host: ut-articulate
+app-name: articulate
+app-host: articulate
 app-instances: 1
 pcf-api: api.sys.pcf.aws.pcfjourney.com
 pcf-username: admin
@@ -9,8 +9,8 @@ pcf-password: sesame750
 pcf-domain: apps.pcf.aws.pcfjourney.com
 pcf-organization: UT
 pcf-space: dev
-cloud2-app-name: ut-articulate
-cloud2-app-host: ut-articulate
+cloud2-app-name: articulate
+cloud2-app-host: articulate
 cloud2-app-instances: 1
 cloud2-pcf-api: api.run.haas-90.pez.pivotal.io
 cloud2-pcf-username: admin
