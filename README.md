@@ -5,7 +5,7 @@ The main purposes here are to demonstrate Blue-Green deployment of Articulate ap
 
 ## Setup concourse locally
 
-  1. Setup Concourse locally by following `Getting Started` section at https://concoursetutorial.com/ 
+  1. Setup Concourse locally by following `Getting Started` section in https://concoursetutorial.com/ 
   2. Mirror this repository to your account as explained in https://help.github.com/articles/duplicating-a-repository/
   3. Clone your newly created repository to your local desktop / laptop by executing the git clone command
 
@@ -31,7 +31,31 @@ cloud2-pcf-organization: UT
 cloud2-pcf-space: dev
 
 ```
- 5. 
+ 5. Edit pipeline.yml file under articulate/ci folder and modify the resources section to point to your github repo
+ 
+```
+# GIT
+- name: resource-git
+  type: git
+  source:
+    uri: https://github.com/<<your repo>>/pcf101-articulate-attendee
+    branch: master
+
+```
+ 6. Install pipeline using the following command from the project root directory
+ 
+```
+fly -t tutorial set-pipeline -p <<pipeline-name>> -c articulate/ci/pipeline.yml -l articulate/ci/vars.yml
+
+```
+
+ 7. Naviage to the pipleine UI (http://127.0.0.1:8080/teams/main/pipelines/<<Pipeline-name>> and trigger a build by clicking     on + sign on "build and deploy" task page as shown below
+  
+ ![Landing Page](misc/Buildpage.png)
+ 
+ 
+ 
+ 
 Now, the `articulate` webapp is already serving on port `8080`
 and the backend app `attendee`, providing RESTful services for `articulate`,
 will be serving on port `8181`, which is exactly the default setting in `articulate`.
