@@ -1,5 +1,5 @@
 
-# PCF 101 Series: Articulate + Attendee
+# Blue-Green deployment across multiple clouds
 
 ![Architecture](misc/architecture.png)
 
