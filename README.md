@@ -1,35 +1,37 @@
 
 # Blue-Green deployment across multiple clouds
 
-![Architecture](misc/architecture.png)
+The main purposes here are to demonstrate Blue-Green deployment of Articulate application across two clouds. This tutorial can be easily expanded to include Atendee services as part of the deployment and also scale it to more than 2 clouds. Follow the steps below for setup and execution of this tutorial.
 
-Both `Articulate` and `Attendee` applications are sample applications built with [Spring Boot](http://projects.spring.io/spring-boot/).
+## Setup concourse locally
 
-The main purposes here are to demonstrate some of Pivotal Cloud Foundry's interesting capacity.
-Some scenarios like below will be covered:
-
-1. Lightning fast of application deployment by `cf push`
-
-2. Service mindset by `cf create-service`
-
-3. Blue-green deployment
-
-
-Meanwhile, I also create the CI / CD pipelines for `articulate` application 
-by using [Concourse](http://concourse.io).
-
-
-
-## To run the applications locally
+  1. Setup Concourse locally by following `Getting Started` section at https://concoursetutorial.com/ 
+  2. Mirror this repository to your account as explained in https://help.github.com/articles/duplicating-a-repository/
+  3. Clone your newly created repository to your local desktop / laptop by executing the git clone command
 
 ```
-$ git clone https://github.com/brightzheng100/pcf101-articulate-attendee.git
-$ cd pcf101-articulate-attendee
-
-$ ./mvnw spring-boot:run -f articulate/pom.xml
-$ ./mvnw spring-boot:run -f attendee/pom.xml
+$ git clone https://<<your-repo>>/pcf101-articulate-attendee.git
 ```
+  
+ 4. Edit `vars.yml` file under articulate\ci folder and update the following variables to point to your cloud instances
 
+```
+pcf-api: api.sys.pcf.aws.pcfjourney.com
+pcf-username: admin
+pcf-password: xxxxxxxxxxxxx
+pcf-domain: apps.pcf.aws.pcfjourney.com
+pcf-organization: UT
+pcf-space: dev
+...
+cloud2-pcf-api: api.run.haas-90.pez.pivotal.io
+cloud2-pcf-username: admin
+cloud2-pcf-password: xxxxxxxxxxxx
+cloud2-pcf-domain: cfapps.haas-90.pez.pivotal.io
+cloud2-pcf-organization: UT
+cloud2-pcf-space: dev
+
+```
+ 5. 
 Now, the `articulate` webapp is already serving on port `8080`
 and the backend app `attendee`, providing RESTful services for `articulate`,
 will be serving on port `8181`, which is exactly the default setting in `articulate`.
