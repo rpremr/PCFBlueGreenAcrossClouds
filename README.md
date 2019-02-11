@@ -49,7 +49,7 @@ fly -t tutorial set-pipeline -p <<pipeline-name>> -c articulate/ci/pipeline.yml 
 
 ```
 
- 7. Naviage to the pipleine UI (http://127.0.0.1:8080/teams/main/pipelines/<<Pipeline-name>> and trigger a build by clicking     on + sign on "build and deploy" task page as shown below
+ 7. Naviage to the pipleine UI (http://127.0.0.1:8080/teams/main/pipelines/<Pipeline-name> and trigger a build by clicking     on + sign on "build and deploy" task page as shown below
   
  ![Landing Page](misc/Buildpage.png)
  
