@@ -53,132 +53,41 @@ fly -t tutorial set-pipeline -p <<pipeline-name>> -c articulate/ci/pipeline.yml 
   
  ![Landing Page](misc/Buildpage.png)
  
+  8. You can see blue-articulate application deployed on two clouds. 
+  
+  9. Navigate to Blue-Green page, you can see the cloud name highlighted in green. The logic for the cloud name display is 
+     based on `pcf-api` variable in the `vars.yml` and is implemented in `EnablementHelper.java` under 
+     `articulate/src/main/java/io/pivotal/education/articulate/service` as shown below. Please 
+     update the logic to fit your api end-point name and cloud provider.
  
+ ```
+     //Added to check the cloud based on api - Ahilan
+    String cloudName = (String) getVcapApplicationMap().get("cf_api");
+    if (cloudName.equals("https://api.sys.pcf.aws.pcfjourney.com")) {
+      cloudName = "AWS";
+    }else{
+      cloudName = "vSphere";
+    }
+    
+ ```
+  10. Start the counter in both clouds so that you can see the blue-green action in real time.
+  11. Edit layout.html under `templates/fragments` folder and un-comment the following lines
+  
+```
+ <li><img
+          src="/images/uta.png"
+          style="width: 40px; height: 40px; margin-top: -2px;"/></li>
+
+
+```
+  12. Check-in the the changes, you will see new build triggered automatically and Blue-Green deployment in action in 
+      cloud1 followed by cloud 2. The following diagram shows the overall flow
+      
+     
+![Landing Page](misc/Automation.png) 
+     
+
  
- 
-Now, the `articulate` webapp is already serving on port `8080`
-and the backend app `attendee`, providing RESTful services for `articulate`,
-will be serving on port `8181`, which is exactly the default setting in `articulate`.
-
-
-Go to the http://localhost:8080 in your browser and you should see below screen:
-
-![Landing Page](misc/articulate-landing-page.png)
-
-
-
-## To Run on Cloud Foundry
-
-Assuming you have logged into your Cloud Foundry targeting the proper organization and space.
-
-```
-$ ./mvnw package
-
-$ cf push -f attendee/manifest.yml
-$ cf push -f articulate/manifest.yml
-```
-
-Now they're working independently.
-Copy the route generated for `attendee` app and it's time to let `articulate` app talks to `attendee` service:
-
-```
-$ cf cups pcf101-demo-attendee-service -p uri
-    uri> <KEY IN URL OF ATTENDEE APP + "/attendees" AND ENTER, e.g. https://pcf101-demo-attendee.apps.mycompany.com/attendees>
-$ cf bind-service pcf101-demo-articulate pcf101-demo-attendee-service
-$ cf restage pcf101-demo-articulate
-```
-
-You can visit the `articulate` app by visiting the route generated:
-
-![Landing Page on PCF](misc/articulate-landing-page-pcf.png)
-
-
-> Tips: 
-> 1. It's recommended to try it out in [Pivotal Web Services](https://run.pivotal.io)
-> 2. To simplify the process, please refer to `start.sh` for how to make all these in one simple command
-> 3. Please refer to `articulate/manifest-with-service.yml` for how to add service binding directly
-> within the yaml file so that the service binding process can be fully automated.
-
-
-By default, the `attendee` app uses an embedded H2 database to persistent attendee records.
-If you want to use MySQL, it's just some commands away:
-
-```
-$ cf create-service <MYSQL SERVICE> <MYSQL PLAN> <MYSQL_SERVICE_INSTANCE_NAME>
-$ cf bind-service pcf101-demo-attendee <MYSQL_SERVICE_INSTANCE_NAME>
-$ cf restage pcf101-demo-attendee
-```
-
-
-
-## Blue Green Deployment
-
-As PCF has layered routing mechanism and provides powerful APIs for the routing control, blue-green deployment becomes very straightforward:
-
-```
-$ DOMAIN=<YOUR APPS DOMAIN>
-$ cf push -f articulate/manifest-v2.yml --no-route
-$ cf map-route pcf101-demo-articulate-v2 ${DOMAIN} -n pcf101-demo-articulate
-
-$ cf scale pcf101-demo-articulate -i 1
-$ cf scale pcf101-demo-articulate-v2 -i 3
-
-$ cf unmap-route pcf101-demo-articulate ${DOMAIN} -n pcf101-demo-articulate
-```
-
-Eventually we can delete the old version of app and rename the new version:
-
-```
-$ cf delete pcf101-demo-articulate -f
-$ cf rename pcf101-demo-articulate-v2 pcf101-demo-articulate
-```
-
-The `articulate` app provides good illustration about the blue-green process.
-
-![Blue-green Deployment](misc/blue-green.png)
-
-> Tips: 
-> 1. This process can be significantly simplified if you use `Autopilot` CF plugin, see [here](https://github.com/contraband/autopilot);
-> 2. Refer to [bluegreen-autopilot.sh](./bluegreen-autopilot.sh) for how to use `Autopilot` to perform blue-green deployment
-
-
-## CI/CD By Concourse
-
-There is CI/CD pipeline for [Concourse](http://concourse.ci) built in.
-![Concourse CI/CD Pipeline](misc/pipeline.png)
-
-To try it out:
-
-```
-$ vi ../_vars.yml
-$ fly -t concourse set-pipeline -p pcf101-demo-articulate-attendee -c articulate/ci/pipeline.yml -l ../_vars.yml
-```
-
-> Note: Below is the sample `_vars.yml`:
-```
-app-name: pcf101-demo-articulate
-app-host: pcf101-demo-articulate
-
-pcf-api: <PCF API ENDPOINT>
-pcf-username: <PCF USER>
-pcf-password: <PCF PASSWORD>
-pcf-domain: <PCF APP DOMAIN>
-pcf-organization: <PCF ORG>
-pcf-space: <PCF SPACE>
-```
-
-
-
-## Clean Up
-
-To clean up the env, simply issue below commands:
-
-```
-$ cf delete pcf101-demo-articulate -r
-$ cf delete pcf101-demo-attendee -r
-$ cf delete-service pcf101-demo-attendee-service
-```
-
 # Credits
 
 This project is originated from https://github.com/pivotal-education/pcf-articulate-code
