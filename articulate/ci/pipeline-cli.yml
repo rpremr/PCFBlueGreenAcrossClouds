@@ -30,5 +30,5 @@ resources:
 - name: resource-git
   type: git
   source:
-    uri: https://github.com/brightzheng100/pcf101-articulate-attendee
+    uri: https://github.com/rpremr/PCFBlueGreenAcrossClouds
     branch: master
