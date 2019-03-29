@@ -3,5 +3,7 @@ applications:
   path: target/articulate-1.0.0.jar
   instances: 2
   memory: 800M
-  routes:
-  - route: articulate-bright.cfapps.io
+  random-route: true
+#prem
+#  routes:
+#  - route: articulate-bright.cfapps.io
