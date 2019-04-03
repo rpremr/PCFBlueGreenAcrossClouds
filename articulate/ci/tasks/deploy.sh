@@ -12,7 +12,7 @@ echo "appname: "${app_name}
 echo "apphost: "${app_host}
 echo "domain: "${domain}
 
-echo "===============================================" 
+echo "==============================================="
 
 
 cf api ${api} --skip-ssl-validation
@@ -25,8 +25,16 @@ then
   echo "blue Available deploying green"
 
   cf push green-${app_name} -p artifacts/articulate-1.0.0.jar -m 800m -n green-${app_name}
-  cf map-route green-${app_name} ${domain} --hostname ${app_host}
-  cf map-route green-${app_name} hillcountrycloud.net --hostname ${app_host}
+  # Ahilan
+  # cf map-route green-${app_name} ${domain} --hostname ${app_host}
+  # prem
+  cf map-route green-${app_name} ${domain} --hostname green-${app_host}
+
+  # Ahilan
+  # cf map-route green-${app_name} hillcountrycloud.net --hostname ${app_host}
+  # prem
+  cf map-route green-${app_name} hillcountrycloud.net --hostname green-${app_host}
+
   echo "Sleeping for 15 seconds"
   sleep 15s
   echo "Scaling up Green and Scaling down blue"
@@ -43,8 +51,17 @@ else
   echo "blue not available deploying blue"
 
   cf push blue-${app_name} -p artifacts/articulate-1.0.0.jar -m 800m -n blue-${app_name}
-  cf map-route blue-${app_name} ${domain} --hostname ${app_host}
-  cf map-route blue-${app_name} hillcountrycloud.net --hostname ${app_host}
+
+  # Ahilan
+  # cf map-route blue-${app_name} ${domain} --hostname ${app_host}
+  # Prem
+  cf map-route blue-${app_name} ${domain} --hostname blue-${app_host}
+
+  # Ahilan
+  # cf map-route blue-${app_name} hillcountrycloud.net --hostname ${app_host}
+  # prem
+  cf map-route blue-${app_name} hillcountrycloud.net --hostname blue-${app_host}
+
   echo "Sleeping for 15 seconds"
   sleep 15s
   echo "Scaling up blue and scaling down green"
@@ -53,7 +70,7 @@ else
   echo "Sleeping for 15 seconds ..."
   sleep 15s
   cf unmap-route blue-${app_name} ${domain} --hostname blue-${app_host}
-  
+
   cf delete green-${app_name} -f
   cf delete-route ${domain} --hostname green-${app_host} -f
   cf delete-route ${domain} --hostname blue-${app_host} -f

@@ -7,7 +7,7 @@
 # 4. Perform some smoke tests
 
 jobs:
-- name: build-and-deploy
+- name: AWS & On-Prem -- Build-and-Deploy-Articulate
   plan:
 
   #1. Get source code from repo like Git
@@ -19,7 +19,7 @@ jobs:
     file: resource-git/articulate/ci/tasks/build.yml
 
   # Deploy Artifact
-  - task: deploy
+  - task: deploy-onAWS
     file: resource-git/articulate/ci/tasks/deploy.yml
     params:
       api: {{pcf-api}}
@@ -37,7 +37,7 @@ jobs:
 #      current_app_name: ((app-name))
 
   # Deploy Artifact
-  - task: deploy-Cloud2
+  - task: deploy-onPremise
     file: resource-git/articulate/ci/tasks/deploy.yml
     params:
       api: {{cloud2-pcf-api}}

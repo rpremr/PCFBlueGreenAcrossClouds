@@ -3,12 +3,12 @@ attendee_app-host: pcf101-demo-attendee-service
 app-name: articulate
 app-host: articulate
 app-instances: 1
-pcf-api: api.run.haas-220.pez.pivotal.io
+pcf-api: api.sys.pcf.aws.pcfjourney.com
 pcf-username: admin
 pcf-password:
-pcf-domain: cfapps.haas-220.pez.pivotal.io
-pcf-organization: NSPARC
-pcf-space: dev
+pcf-domain: apps.pcf.aws.pcfjourney.com
+pcf-organization: UT
+pcf-space: qa
 cloud2-app-name: articulate
 cloud2-app-host: articulate
 cloud2-app-instances: 1
