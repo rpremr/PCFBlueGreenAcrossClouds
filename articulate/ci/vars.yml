@@ -1,7 +1,7 @@
 attendee_app-name: pcf101-demo-attendee-service
 attendee_app-host: pcf101-demo-attendee-service
 app-name: articulate
-app-host: articulate
+app-host: pls-articulate
 app-instances: 1
 pcf-api: api.sys.pcf.aws.pcfjourney.com
 pcf-username: admin
@@ -10,11 +10,11 @@ pcf-domain: apps.pcf.aws.pcfjourney.com
 pcf-organization: UT
 pcf-space: qa
 cloud2-app-name: articulate
-cloud2-app-host: articulate
+cloud2-app-host: pls-articulate
 cloud2-app-instances: 1
 cloud2-pcf-api: api.run.haas-220.pez.pivotal.io
 cloud2-pcf-username: admin
-cloud2-pcf-password: 
+cloud2-pcf-password:
 cloud2-pcf-domain: cfapps.haas-220.pez.pivotal.io
 cloud2-pcf-organization: NSPARC
 cloud2-pcf-space: qa

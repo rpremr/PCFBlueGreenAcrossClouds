@@ -25,15 +25,9 @@ then
   echo "blue Available deploying green"
 
   cf push green-${app_name} -p artifacts/articulate-1.0.0.jar -m 800m -n green-${app_name}
-  # Ahilan
-  # cf map-route green-${app_name} ${domain} --hostname ${app_host}
-  # prem
-  cf map-route green-${app_name} ${domain} --hostname green-${app_host}
-
-  # Ahilan
-  # cf map-route green-${app_name} hillcountrycloud.net --hostname ${app_host}
-  # prem
-  cf map-route green-${app_name} hillcountrycloud.net --hostname green-${app_host}
+  cf map-route green-${app_name} ${domain} --hostname ${app_host}
+  # Prem
+  #cf map-route green-${app_name} hillcountrycloud.net --hostname ${app_host}
 
   echo "Sleeping for 15 seconds"
   sleep 15s
@@ -51,16 +45,9 @@ else
   echo "blue not available deploying blue"
 
   cf push blue-${app_name} -p artifacts/articulate-1.0.0.jar -m 800m -n blue-${app_name}
-
-  # Ahilan
-  # cf map-route blue-${app_name} ${domain} --hostname ${app_host}
+  cf map-route blue-${app_name} ${domain} --hostname ${app_host}
   # Prem
-  cf map-route blue-${app_name} ${domain} --hostname blue-${app_host}
-
-  # Ahilan
-  # cf map-route blue-${app_name} hillcountrycloud.net --hostname ${app_host}
-  # prem
-  cf map-route blue-${app_name} hillcountrycloud.net --hostname blue-${app_host}
+  #cf map-route blue-${app_name} hillcountrycloud.net --hostname ${app_host}
 
   echo "Sleeping for 15 seconds"
   sleep 15s
