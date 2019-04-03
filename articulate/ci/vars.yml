@@ -5,7 +5,7 @@ app-host: pls-articulate
 app-instances: 1
 pcf-api: api.sys.pcf.aws.pcfjourney.com
 pcf-username: admin
-pcf-password:
+pcf-password: oTDqIAcy0iqOvCCfmY6p9tPEhktLOzf-
 pcf-domain: apps.pcf.aws.pcfjourney.com
 pcf-organization: UT
 pcf-space: qa
@@ -14,7 +14,7 @@ cloud2-app-host: pls-articulate
 cloud2-app-instances: 1
 cloud2-pcf-api: api.run.haas-220.pez.pivotal.io
 cloud2-pcf-username: admin
-cloud2-pcf-password:
+cloud2-pcf-password: JZzt4kuz_2WWQ663vcWPphBe6kqY-Dj4
 cloud2-pcf-domain: cfapps.haas-220.pez.pivotal.io
 cloud2-pcf-organization: NSPARC
 cloud2-pcf-space: qa
