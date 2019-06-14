@@ -7,7 +7,7 @@ pcf-api: api.sys.pcf.aws.pcfjourney.com
 pcf-username: admin
 pcf-password:
 pcf-domain: apps.pcf.aws.pcfjourney.com
-pcf-organization: ACC
+pcf-organization: InnovationLab
 pcf-space: dev
 cloud2-app-name: articulate
 cloud2-app-host: articulate
@@ -15,6 +15,6 @@ cloud2-app-instances: 1
 cloud2-pcf-api: api.run.haas-220.pez.pivotal.io
 cloud2-pcf-username: admin
 cloud2-pcf-password:
-cloud2-pcf-domain: cfapps.haas-220.pez.pivotal.io
-cloud2-pcf-organization: ACC
+cloud2-pcf-domain: cfapps.haas-263.pez.pivotal.io
+cloud2-pcf-organization: InnovationLab
 cloud2-pcf-space: dev
